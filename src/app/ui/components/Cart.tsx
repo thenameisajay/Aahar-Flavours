@@ -9,6 +9,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { use } from "react";
+import { clear } from "console";
 
 export default function Cart(props: any) {
   let cart = props.cart;
@@ -31,6 +32,13 @@ export default function Cart(props: any) {
 
   console.log(cart);
 
+  function clearCart() {
+    localStorage.removeItem("cart");
+    cart = [];
+    setCartTotal(0);
+    setCartEmpty(true);
+  }
+
   return (
     <div>
       {cartEmpty ? (
@@ -38,34 +46,37 @@ export default function Cart(props: any) {
           <h1 className="text-3xl font-bold">Your cart is empty</h1>
         </div>
       ) : (
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 200 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="right">Name</TableCell>
-                <TableCell align="right">Price</TableCell>
-                <TableCell align="right">Quantity</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {cart.map((cartItem: any) => (
-                <TableRow
-                  key={cartItem.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell align="right">{cartItem.name}</TableCell>
-                  <TableCell align="right">{"£ " + cartItem.price}</TableCell>
-                  <TableCell align="right">{cartItem.quantity}</TableCell>
+        <div className="flex flex-col items-center justify-center mt-5">
+          <TableContainer component={Paper}>
+            <Table sx={{ minWidth: 200 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="right">Name</TableCell>
+                  <TableCell align="right">Price</TableCell>
+                  <TableCell align="right">Quantity</TableCell>
                 </TableRow>
-              ))}
-              <TableRow>
-                <TableCell align="right">Total</TableCell>
-                <TableCell align="right"></TableCell>
-                <TableCell align="right">{"£ " + cartTotal}</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
+              </TableHead>
+              <TableBody>
+                {cart.map((cartItem: any) => (
+                  <TableRow
+                    key={cartItem.name}
+                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  >
+                    <TableCell align="right">{cartItem.name}</TableCell>
+                    <TableCell align="right">{"£ " + cartItem.price}</TableCell>
+                    <TableCell align="right">{cartItem.quantity}</TableCell>
+                  </TableRow>
+                ))}
+                <TableRow>
+                  <TableCell align="right">Total</TableCell>
+                  <TableCell align="right"></TableCell>
+                  <TableCell align="right">{"£ " + cartTotal}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+            <Button onClick={() => clearCart()}>Clear All</Button>
+          </TableContainer>
+        </div>
       )}
     </div>
   );

@@ -16,13 +16,13 @@ export default function Example() {
   const [open, setOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cart, setCart] = useState([]);
+  function retrieveCart() {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    setCart(cart);
+  }
 
   useEffect(() => {
     // Define a function to retrieve cart from local storage
-    function retrieveCart() {
-      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-      setCart(cart);
-    }
 
     // Call the function to retrieve the cart initially
     retrieveCart();
@@ -34,10 +34,11 @@ export default function Example() {
     return () => {
       window.removeEventListener("storage", retrieveCart);
     };
-  }, [cart]);
+  }, []);
 
   const showModal = () => {
     setIsModalOpen(true);
+    retrieveCart();
   };
 
   const handleOk = () => {
