@@ -309,9 +309,7 @@ export default function Example() {
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
+                    {/* TODO : Add the table and rows */}
                   </Modal>
                 </div>
               </div>

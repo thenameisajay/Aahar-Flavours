@@ -70,6 +70,31 @@ export default function Foods() {
     setIsOpen(false);
   }
 
+  // Save the food item to local storage as we are only using a static site.
+
+  function addToCart(name: string) {
+    // Retrieve the existing cart items from localStorage
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+    // Check if the item is already in the cart
+    const existingItem = cart.find((item: any) => item.name === name);
+
+    if (existingItem) {
+      // If the item is already in the cart, update its quantity
+      existingItem.quantity += 1;
+    } else {
+      // If the item is not in the cart, add it with a quantity of 1
+      cart.push({
+        name: name,
+        price: products.find((product) => product.name === name)?.price || "",
+        quantity: 1,
+      });
+    }
+
+    // Save the updated cart back to localStorage
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
   return (
     <>
       <div className="bg-white">
@@ -186,6 +211,7 @@ export default function Foods() {
                     <button
                       className="flex flex-row items-center rounded-md py-[0.4375rem] w-20  h-10 pl-2 pr-2 text-sm font-semibold lg:pr-3 bg-white shadow hover:bg-green-500"
                       type="button"
+                      onClick={() => addToCart(product.name)}
                     >
                       <ShoppingCart />
                       <p className="ml-2 text-sm visible">Add </p>
