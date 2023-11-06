@@ -19,6 +19,8 @@ const config: Config = {
     require("@tailwindcss/aspect-ratio"),
     require("flowbite/plugin"),
     require("daisyui"),
+    require("tw-elements/dist/plugin.cjs"),
   ],
+  darkMode: "class",
 };
 export default config;
