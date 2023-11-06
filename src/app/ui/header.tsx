@@ -357,9 +357,44 @@ export default function Example() {
                   />
                 </a>
               </div>
-
-              {/* Place section buttons here */}
-
+              {/* Section buttons here */}
+              <div className=" lg:ml-6 lg:flex lg:space-x-8">
+                <a
+                  key="#"
+                  href="#"
+                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                >
+                  Home
+                </a>
+                <a
+                  key="#"
+                  href="#"
+                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                >
+                  About
+                </a>
+                <a
+                  key="#"
+                  href="#"
+                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                >
+                  Menu
+                </a>
+                <a
+                  key="#"
+                  href="#"
+                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                >
+                  Reviews
+                </a>
+                <a
+                  key="#"
+                  href="#"
+                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                >
+                  Contact Us
+                </a>
+              </div>
               <div className="ml-auto flex items-center">
                 <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <a
