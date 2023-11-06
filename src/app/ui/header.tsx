@@ -358,39 +358,39 @@ export default function Example() {
                 </a>
               </div>
               {/* Section buttons here */}
-              <div className=" lg:ml-6 lg:flex lg:space-x-8">
+              <div className=" hidden lg:ml-6 lg:flex lg:space-x-8">
                 <a
                   key="#"
                   href="#"
-                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                  className="  flex items-center text-sm font-medium text-gray-700 hover:text-white  hover:bg-blue-500   rounded-lg p-2"
                 >
                   Home
                 </a>
                 <a
                   key="#"
                   href="#"
-                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                  className="flex items-center text-sm font-medium text-gray-700 hover:text-white  hover:bg-blue-500   rounded-lg p-2"
                 >
                   About
                 </a>
                 <a
                   key="#"
                   href="#"
-                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                  className="flex items-center text-sm font-medium text-gray-700 hover:text-white  hover:bg-blue-500   rounded-lg p-2"
                 >
                   Menu
                 </a>
                 <a
                   key="#"
                   href="#"
-                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                  className="flex items-center text-sm font-medium text-gray-700 hover:text-white  hover:bg-blue-500   rounded-lg p-2"
                 >
                   Reviews
                 </a>
                 <a
                   key="#"
                   href="#"
-                  className="flex items-center text-sm font-medium text-gray-700 hover:text-gray-800"
+                  className="flex items-center text-sm font-medium text-gray-700 hover:text-white  hover:bg-blue-500   rounded-lg p-2"
                 >
                   Contact Us
                 </a>
