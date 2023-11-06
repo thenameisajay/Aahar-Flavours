@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCart, ShoppingBag } from "lucide-react";
 
+// The following is a list of products that will be displayed on the page.
 const products = [
   {
     id: 1,
