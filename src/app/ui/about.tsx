@@ -13,6 +13,7 @@ export default function About() {
               width={400}
               height={400}
               className="rounded-lg  max-[639px]:hidden"
+              priority
             />
           </figure>
           <div className="card-body">
