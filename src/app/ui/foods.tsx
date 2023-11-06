@@ -12,7 +12,7 @@ const products = [
     href: "#",
     imageSrc: "/images/foods/1.webp",
     imageAlt: "Chicken Briyani",
-    price: "£10",
+    price: 10,
     description:
       "Biryani, pronounced 'beery-anee,' is the paella of Indian food. Traditionally, it's baked in a clay pot for hours, but our easy chicken one-pot wonder allows you to create this tasty bowlful at speed!",
   },
@@ -22,7 +22,7 @@ const products = [
     href: "#",
     imageSrc: "/images/foods/2.webp",
     imageAlt: "Easy Lamb Biryani",
-    price: "£15",
+    price: 15,
     description:
       "Biryani, pronounced 'beery-anee,' is the paella of Indian food. Traditionally, it's baked in a clay pot for hours, but our version with British lamb mince is ready in less than thirty minutes!",
   },
@@ -32,7 +32,7 @@ const products = [
     href: "#",
     imageSrc: "/images/foods/3.webp",
     imageAlt: "Palak Paneer With Cardamom Rice",
-    price: "£12",
+    price: 12,
     description:
       "To add flavour to this spicy spinach curry, you'll sizzle tomato, onion and spices into a delicious sauce. Add golden brown paneer cheese and serve with fragrant cardamom rice.",
   },
@@ -42,7 +42,7 @@ const products = [
     href: "#",
     imageSrc: "/images/foods/4.webp",
     imageAlt: "Coriander Chicken & Spiced Rice",
-    price: "£17",
+    price: 17,
     description:
       "This is modern Indian food. You'll make a fresh coriander chutney, using cool yoghurt, ground almonds, garlic, ginger and coriander. Stir it into warm pan-fried chicken and serve over spiced sultana rice, to create a beautiful & fresh alternative to curry. (Naturally gluten-free, but unsuitable for coeliacs).",
   },
@@ -81,6 +81,9 @@ export default function Foods() {
 
     if (existingItem) {
       // If the item is already in the cart, update its quantity
+      existingItem.price += products.find(
+        (product) => product.name === name
+      )?.price;
       existingItem.quantity += 1;
     } else {
       // If the item is not in the cart, add it with a quantity of 1
@@ -134,7 +137,7 @@ export default function Foods() {
                     </h3>
                   </div>
                   <p className="text-sm font-medium text-gray-900">
-                    {product.price}
+                    {"£" + product.price}
                   </p>
                 </div>
                 <div key={product.id} className="group relative mt-3">

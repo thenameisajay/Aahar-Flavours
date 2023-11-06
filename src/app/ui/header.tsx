@@ -1,5 +1,5 @@
 "use client";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { Phone, Home, User2, MenuSquare, Star, BookUser } from "lucide-react";
@@ -15,6 +15,30 @@ import Cart from "./components/Cart";
 export default function Example() {
   const [open, setOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
+
+  useEffect(() => {
+    // Define a function to retrieve cart from local storage
+    function retrieveCart() {
+      const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+      setCart(cart);
+      setCartTotal(
+        cart.reduce((total: any, item: any) => total + item.price, 0)
+      );
+    }
+
+    // Call the function to retrieve the cart initially
+    retrieveCart();
+
+    // Use the storage event to update the cart when changes are made in local storage
+    window.addEventListener("storage", retrieveCart);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("storage", retrieveCart);
+    };
+  }, []);
 
   const showModal = () => {
     setIsModalOpen(true);
@@ -305,12 +329,11 @@ export default function Example() {
                     />
                   </Button>
                   <Modal
-                    title="Shopping Cart"
                     open={isModalOpen}
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >
-                    <Cart />
+                    <Cart cart={cart} />
                   </Modal>
                 </div>
               </div>

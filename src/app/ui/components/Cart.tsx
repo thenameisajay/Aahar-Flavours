@@ -1,19 +1,72 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect, useCallback } from "react";
 import Button from "@mui/material/Button";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
+import { use } from "react";
 
-export default function Cart() {
-  function retriveCart() {
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    console.log(cart);
-    return cart;
-  }
+export default function Cart(props: any) {
+  let cart = props.cart;
+  const [cartTotal, setCartTotal] = useState(0);
+  const [cartEmpty, setCartEmpty] = useState(true);
+
+  useEffect(() => {
+    let total = 0;
+    cart.forEach((cart: any) => {
+      total += cart.price * cart.quantity;
+    });
+    setCartTotal(total);
+
+    if (cart.length > 0) {
+      setCartEmpty(false);
+    } else {
+      setCartEmpty(true);
+    }
+  }, [cart]);
+
+  console.log(cart);
 
   return (
     <div>
-      <h1>Cart</h1>
-      <Button variant="outlined" onClick={() => retriveCart()}>
-        Outlined
-      </Button>
+      {cartEmpty ? (
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-3xl font-bold">Your cart is empty</h1>
+        </div>
+      ) : (
+        <TableContainer component={Paper}>
+          <Table sx={{ minWidth: 200 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="right">Name</TableCell>
+                <TableCell align="right">Price</TableCell>
+                <TableCell align="right">Quantity</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {cart.map((cartItem: any) => (
+                <TableRow
+                  key={cartItem.name}
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                >
+                  <TableCell align="right">{cartItem.name}</TableCell>
+                  <TableCell align="right">{"£ " + cartItem.price}</TableCell>
+                  <TableCell align="right">{cartItem.quantity}</TableCell>
+                </TableRow>
+              ))}
+              <TableRow>
+                <TableCell align="right">Total</TableCell>
+                <TableCell align="right"></TableCell>
+                <TableCell align="right">{"£ " + cartTotal}</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      )}
     </div>
   );
 }
