@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="flex flex-col ">{children}</main>
+        <main className="flex flex-col dark:bg-white ">{children}</main>
       </body>
     </html>
   );
