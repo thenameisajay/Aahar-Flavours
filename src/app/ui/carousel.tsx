@@ -5,7 +5,12 @@ import { Carousel } from "react-responsive-carousel";
 export default function CarouselWithContent() {
   return (
     <div className="mx-auto mt-2  w-11/12 h-4/5 rounded-lg  justify-center items-center">
-      <Carousel stopOnHover={false} autoPlay={true} infiniteLoop={true}>
+      <Carousel
+        stopOnHover={false}
+        autoPlay={true}
+        infiniteLoop={true}
+        dynamicHeight={true}
+      >
         <div>
           <Image
             className="rounded-2xl"
