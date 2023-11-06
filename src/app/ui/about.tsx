@@ -8,7 +8,7 @@ export default function About() {
         <div className="flex flex-row">
           <figure className="p-6">
             <Image
-              src="/images/about/chef.jpg"
+              src="/images/about/chef.webp"
               alt="Movie"
               width={400}
               height={400}
