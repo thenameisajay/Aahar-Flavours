@@ -10,8 +10,8 @@ export default function About() {
             <Image
               src="/images/about/chef.webp"
               alt="Movie"
-              width={400}
-              height={400}
+              width={800}
+              height={800}
               className="rounded-lg  max-[639px]:hidden"
               priority
             />
