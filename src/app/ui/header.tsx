@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { Button, Modal } from "antd";
+import Cart from "./components/Cart";
 
 export default function Example() {
   const [open, setOpen] = useState(false);
@@ -309,7 +310,7 @@ export default function Example() {
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >
-                    {/* TODO : Add the table and rows */}
+                    <Cart />
                   </Modal>
                 </div>
               </div>
