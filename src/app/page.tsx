@@ -1,7 +1,13 @@
+"use client";
+import React from "react";
+
+// Importing the components
+import Header from "./ui/header";
+
 export default function Home() {
   return (
-    <main>
-      <h1 className="">Hello World</h1>
-    </main>
+    <>
+      <Header />
+    </>
   );
 }
