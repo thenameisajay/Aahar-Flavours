@@ -16,16 +16,12 @@ export default function Example() {
   const [open, setOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [cart, setCart] = useState([]);
-  const [cartTotal, setCartTotal] = useState(0);
 
   useEffect(() => {
     // Define a function to retrieve cart from local storage
     function retrieveCart() {
       const cart = JSON.parse(localStorage.getItem("cart") || "[]");
       setCart(cart);
-      setCartTotal(
-        cart.reduce((total: any, item: any) => total + item.price, 0)
-      );
     }
 
     // Call the function to retrieve the cart initially
@@ -38,7 +34,7 @@ export default function Example() {
     return () => {
       window.removeEventListener("storage", retrieveCart);
     };
-  }, []);
+  }, [cart]);
 
   const showModal = () => {
     setIsModalOpen(true);
