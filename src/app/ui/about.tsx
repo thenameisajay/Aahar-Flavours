@@ -10,17 +10,17 @@ export default function About() {
             <Image
               src="/images/about/chef.jpg"
               alt="Movie"
-              width={100}
-              height={100}
-              className="rounded-lg"
+              width={400}
+              height={400}
+              className="rounded-lg  max-[639px]:hidden"
             />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">READ OUR STORY</h2>
-            <h2 className="card-title font-sans">
-              We've been Making The Delicious Foods Since 2017
+            <h2 className="card-title text-3xl">READ OUR STORY</h2>
+            <h2 className="card-title font-sans text-gray-500 font-bold">
+              We&apos;ve been Making The Delicious Foods Since 2017
             </h2>
-            <p className="font-sans">
+            <p className="font-sans text-lg ">
               Aahar was formed with a simple goal in mind, provide genuinely
               fresh and authentic nepalese food to our customers We focus on
               using fresh, seasonal ingredients to create dishes that are true
