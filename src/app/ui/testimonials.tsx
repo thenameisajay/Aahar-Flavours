@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function Testimonials() {
+export default function App() {
   return <></>;
 }
