@@ -5,7 +5,7 @@ export default function About() {
   return (
     <div className="bg-white">
       <div className="container mx-auto mt-12 dark:bg-white bg-white">
-        <div className="card card-side bg-base-100 shadow-xl dark:bg-white bg-white">
+        <div className="card card-side  shadow-xl dark:bg-white bg-white">
           <div className="flex flex-row">
             <figure className="p-6">
               <Image
