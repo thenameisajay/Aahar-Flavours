@@ -30,8 +30,6 @@ export default function Cart(props: any) {
     }
   }, [cart]);
 
-  console.log(cart);
-
   function clearCart() {
     localStorage.removeItem("cart");
     cart = [];
