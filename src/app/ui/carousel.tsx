@@ -11,6 +11,7 @@ export default function CarouselWithContent() {
           autoPlay={true}
           infiniteLoop={true}
           dynamicHeight={true}
+          showThumbs={false}
         >
           <div>
             <Image

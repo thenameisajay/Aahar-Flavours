@@ -63,8 +63,8 @@ export default function Cart(props: any) {
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
                     <TableCell align="right">{cartItem.name}</TableCell>
-                    <TableCell align="right">{"£ " + cartItem.price}</TableCell>
                     <TableCell align="right">{cartItem.quantity}</TableCell>
+                    <TableCell align="right">{"£ " + cartItem.price}</TableCell>
                   </TableRow>
                 ))}
                 <TableRow>
