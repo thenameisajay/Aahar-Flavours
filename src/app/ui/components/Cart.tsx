@@ -50,8 +50,8 @@ export default function Cart(props: any) {
               <TableHead>
                 <TableRow>
                   <TableCell align="right">Name</TableCell>
-                  <TableCell align="right">Price</TableCell>
                   <TableCell align="right">Quantity</TableCell>
+                  <TableCell align="right">Price</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
