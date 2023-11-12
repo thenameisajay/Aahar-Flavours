@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { Button, Modal } from "antd";
-import Cart from "./components/cart";
+import Cart from "../ui/components/cart";
 
 export default function Example() {
   const [open, setOpen] = useState(false);
