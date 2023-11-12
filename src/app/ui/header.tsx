@@ -15,10 +15,10 @@ import Cart from "./components/cart";
 export default function Example() {
   const [open, setOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [cart, setCart] = useState([]);
+  const [carts, setCarts] = useState([]);
   function retrieveCart() {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
-    setCart(cart);
+    setCarts(cart);
   }
 
   useEffect(() => {
@@ -330,7 +330,7 @@ export default function Example() {
                     onOk={handleOk}
                     onCancel={handleCancel}
                   >
-                    <Cart cart={cart} />
+                    <Cart cart={carts} />
                   </Modal>
                 </div>
               </div>
