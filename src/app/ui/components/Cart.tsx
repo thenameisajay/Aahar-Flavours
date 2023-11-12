@@ -8,8 +8,6 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { use } from "react";
-import { clear } from "console";
 
 export default function Cart(props: any) {
   let cart = props.cart;
