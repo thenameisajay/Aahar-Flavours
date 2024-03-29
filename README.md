@@ -1,6 +1,6 @@
 # Aahar Flavours -  Indian Cuisine Website
 
-Welcome to our Indian Cuisine website repository! This project is a one-page website built using Next.js 14 framework. It showcases various Indian dishes along with a functioning cart to demonstrate how orders can be placed (though not connected to a backend for order processing).
+ This project is a one-page website built using Next.js 14 framework. It showcases various Indian dishes along with a functioning cart to demonstrate how orders can be placed (though not connected to a backend for order processing).
 
 ## Features
 
