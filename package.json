@@ -10,7 +10,7 @@
     "check-types": "tsc --noEmit",
     "check-format": "npx prettier . --check",
     "format": "npx prettier . --write",
-    "prepare": "husky install",
+    "prepare": "husky",
     "prepare-commit": "yarn lint && yarn check-types && yarn check-format"
   },
   "dependencies": {
@@ -31,10 +31,10 @@
     "flowbite": "^2.0.0",
     "lucide-react": "^0.292.0",
     "mdb-react-ui-kit": "^7.0.0",
-    "next": "14.0.1",
-    "react": "^18",
+    "next": "^14.1.4",
+    "react": "^18.2.0",
     "react-bootstrap": "^2.9.1",
-    "react-dom": "^18",
+    "react-dom": "^18.2.0",
     "react-responsive-carousel": "^3.2.23",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
@@ -50,10 +50,10 @@
     "autoprefixer": "^10.0.1",
     "daisyui": "^3.9.4",
     "eslint": "^8",
-    "eslint-config-next": "14.0.1",
+    "eslint-config-next": "^14.1.4",
     "husky": "^9.0.11",
     "postcss": "^8",
-    "tailwindcss": "^3.3.0",
+    "tailwindcss": "^3.4.3",
     "typescript": "^5"
   }
 }
