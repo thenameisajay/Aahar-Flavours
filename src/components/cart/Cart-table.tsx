@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import { CartItem } from '@/types/interfaces/interfaces';
@@ -13,19 +13,15 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-//TODO: Use localstorage from useHooks library
-
-export default function CartTable({ cart: cartData }: { cart: CartItem[] }) {
+export default function CartTable({ cartData }: { cartData: CartItem[] }) {
     const [cartTotal, setCartTotal] = useState(0);
     const [cartEmpty, setCartEmpty] = useState(true);
 
-    let cartCopyItems = useMemo(() => [...cartData], [cartData]);
-
     useEffect(() => {
-        let total = 0;
-        cartCopyItems.forEach((cart: CartItem) => {
-            total += cart.price * cart.quantity;
-        });
+        const total = cartData.reduce((acc, item) => {
+            return acc + item.price * item.quantity;
+        }, 0);
+
         setCartTotal(total);
 
         if (cartData.length > 0) {
@@ -33,11 +29,10 @@ export default function CartTable({ cart: cartData }: { cart: CartItem[] }) {
         } else {
             setCartEmpty(true);
         }
-    }, [cartData.length]);
+    }, [cartData]);
 
     function clearCart() {
         localStorage.removeItem('cart');
-        cartCopyItems = [];
         setCartTotal(0);
         setCartEmpty(true);
         toast.success('Cart cleared');

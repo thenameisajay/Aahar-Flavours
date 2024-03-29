@@ -1,25 +1,18 @@
-import React, { useEffect, useState } from 'react';
+'use client';
+
+import React, { useState } from 'react';
 
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { Modal } from 'antd';
+//TODO: Use localstorage from useHooks library
+import { useLocalStorage } from 'usehooks-ts';
 
 import CartTable from '@/components/cart/Cart-table';
 import { Button } from '@/components/ui/button';
 
-//TODO: Use localstorage from useHooks library
-
 export default function CartComponent() {
-    const [cartData, setCartData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    useEffect(() => {
-        retrieveCart();
-
-        window.addEventListener('storage', retrieveCart);
-
-        return () => {
-            window.removeEventListener('storage', retrieveCart);
-        };
-    }, []);
+    const [cartData, setCartData] = useLocalStorage('cart', []);
 
     const retrieveCart = () => {
         const storageCartData = JSON.parse(
@@ -27,10 +20,9 @@ export default function CartComponent() {
         );
         setCartData(storageCartData);
     };
-
     const showModal = () => {
-        setIsModalOpen(true);
         retrieveCart();
+        setIsModalOpen(true);
     };
 
     const handleOk = () => {
@@ -54,7 +46,7 @@ export default function CartComponent() {
                 />
             </Button>
             <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <CartTable cart={cartData} />
+                <CartTable cartData={cartData} />
             </Modal>
         </div>
     );
