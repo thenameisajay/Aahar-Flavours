@@ -32,6 +32,7 @@
         "embla-carousel": "^8.0.0-rc14",
         "embla-carousel-react": "^8.0.0",
         "flowbite": "^2.0.0",
+        "flowbite-react": "^0.7.6",
         "lucide-react": "^0.363.0",
         "mdb-react-ui-kit": "^7.0.0",
         "next": "^14.1.4",
