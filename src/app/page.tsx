@@ -3,12 +3,13 @@
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
 
-import About from '@/components/about';
-import CarouselWithContent from '@/components/carousel';
-import Foods from '@/components/foods';
-import Footer from '@/components/footer';
-import Header from '@/components/header';
-import Testimonials from '@/components/testimonials';
+import About from '@/components/About';
+import CarouselWithContent from '@/components/Carousel';
+import Foods from '@/components/FoodComponent';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+
+// import Testimonials from '@/components/testimonials';
 
 export default function Home() {
     return (
@@ -18,7 +19,7 @@ export default function Home() {
             <CarouselWithContent />
             <Foods />
             <About />
-            <Testimonials />
+            {/* <Testimonials /> */}
             <Footer />
         </div>
     );

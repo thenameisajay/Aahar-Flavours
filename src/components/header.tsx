@@ -4,8 +4,8 @@ import Image from 'next/image';
 
 import { Phone } from 'lucide-react';
 
-import CartComponent from '@/components/cart/cart-component';
-import MobileMenu from '@/components/mobile-menu';
+import MobileMenu from '@/components/Mobile-menu';
+import CartComponent from '@/components/cart/Cart-component';
 
 export default function Header() {
     return (

@@ -1,10 +1,9 @@
 'use client';
 
-import { CartItem } from '@/types/interfaces/interfaces';
-
 import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
+import { CartItem } from '@/types/interfaces/interfaces';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';

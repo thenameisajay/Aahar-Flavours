@@ -1,15 +1,15 @@
 'use client';
 
-import { products } from '@/data/productData';
-import { CartItem } from '@/types/interfaces/interfaces';
-
 import React, { Fragment, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import Image from 'next/image';
 
+import { CartItem } from '@/types/interfaces/interfaces';
 import { Dialog, Transition } from '@headlessui/react';
 import { ShoppingBag, ShoppingCart } from 'lucide-react';
+
+import { products } from '@/data/productData';
 
 function truncateDescription(description: string, maxLength: number) {
     if (description.length > maxLength) {

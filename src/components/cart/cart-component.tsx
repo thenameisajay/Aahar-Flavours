@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { Modal } from 'antd';
 
-import CartTable from '@/components/cart/cart-table';
+import CartTable from '@/components/cart/Cart-table';
 import { Button } from '@/components/ui/Button';
 
 //TODO: Use localstorage from useHooks library

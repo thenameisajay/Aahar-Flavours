@@ -8,11 +8,13 @@ const config = {
     semi: true,
     singleQuote: true,
     importOrder: [
+        '<BUILTIN_MODULES>',
         '^(^react$|@react|react)',
         '^(next/(.*)$)|^(next$)',
-        '^@?\\w',
+        '<THIRD_PARTY_MODULES>',
+
+        '^@/(components|data|config)/',
         '^[./]',
-        '^@/components',
     ],
     importOrderSeparation: true,
     importOrderSortSpecifiers: true,
