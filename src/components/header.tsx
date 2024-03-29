@@ -1,9 +1,11 @@
 'use client';
 
+import Image from 'next/image';
+
+import { Phone } from 'lucide-react';
+
 import CartComponent from '@/components/cart/cart-component';
 import MobileMenu from '@/components/mobile-menu';
-import { Phone } from 'lucide-react';
-import Image from 'next/image';
 
 export default function Header() {
     return (

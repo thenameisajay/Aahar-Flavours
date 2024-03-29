@@ -1,10 +1,12 @@
 'use client';
 
+import React, { Fragment, useState } from 'react';
+
+import Image from 'next/image';
+
 import { Dialog, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { BookUser, Home, MenuSquare, Phone, Star, User2 } from 'lucide-react';
-import Image from 'next/image';
-import React, { Fragment, useState } from 'react';
 
 export default function MobileMenu() {
     const [open, setOpen] = useState(false);

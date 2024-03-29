@@ -1,8 +1,10 @@
-import CartTable from '@/components/cart/cart-table';
-import { Button } from '@/components/ui/Button';
+import React, { useEffect, useState } from 'react';
+
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { Modal } from 'antd';
-import React, { useEffect, useState } from 'react';
+
+import CartTable from '@/components/cart/cart-table';
+import { Button } from '@/components/ui/Button';
 
 //TODO: Use localstorage from useHooks library
 

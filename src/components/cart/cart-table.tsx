@@ -1,6 +1,10 @@
 'use client';
 
 import { CartItem } from '@/types/interfaces/interfaces';
+
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
+
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
@@ -9,8 +13,6 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import React, { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
 
 export default function CartTable({ cart }: { cart: CartItem[] }) {
     const [cartTotal, setCartTotal] = useState(0);
