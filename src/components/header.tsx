@@ -8,26 +8,10 @@ import CartComponent from '@/components/cart/Cart-component';
 import { mainNav } from '@/config/docs';
 
 const MoreDetailsComponent = () => {
-    return (
-        <>
-            <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
-                <a
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800 flex flex-row justify-center items-center"
-                >
-                    <Phone width={20} height={20} />
-                    <p className=" ml-2 text-start">(07443353419) </p>
-                </a>
-                <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
-                <a
-                    href="#"
-                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
-                >
-                    Order
-                </a>
-            </div>
+    const CurrenyandImage = () => {
+        return (
             <div className="hidden lg:ml-8 lg:flex">
-                <a
+                <Link
                     href="#"
                     className="flex items-center text-gray-700 hover:text-gray-800"
                 >
@@ -40,8 +24,36 @@ const MoreDetailsComponent = () => {
                     />
                     <span className="ml-3 block text-sm font-medium">GBP</span>
                     <span className="sr-only">, change currency</span>
-                </a>
+                </Link>
             </div>
+        );
+    };
+
+    const PhoneAndLink = () => {
+        return (
+            <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                <Link
+                    href="#"
+                    className="text-sm font-medium text-gray-700 hover:text-gray-800 flex flex-row justify-center items-center"
+                >
+                    <Phone width={20} height={20} />
+                    <p className=" ml-2 text-start">(07443353419) </p>
+                </Link>
+                <span className="h-6 w-px bg-gray-200" aria-hidden="true" />
+                <Link
+                    href="#"
+                    className="text-sm font-medium text-gray-700 hover:text-gray-800"
+                >
+                    Order
+                </Link>
+            </div>
+        );
+    };
+
+    return (
+        <>
+            <PhoneAndLink />
+            <CurrenyandImage />
         </>
     );
 };
@@ -77,20 +89,22 @@ const SectionButtonsComponent = () => {
 
 const LargeMenuComponent = () => {
     return (
-        <div className=" px-2 relative   flex mx-2 ">
-            {mainNav.map(
-                (item) =>
-                    item.href && (
-                        <div key={item.title}>
-                            <Link
-                                href={item.href}
-                                className={`text-sm mx-2  font-medium text-muted-foreground transition-colors hover:text-primary  hover:bg-slate-100  dark:hover:bg-slate-800 p-2 rounded-full `}
-                            >
-                                {item.title}
-                            </Link>
-                        </div>
-                    ),
-            )}
+        <div className="hidden lg:block ">
+            <div className=" px-2 relative flex mx-2 ">
+                {mainNav.map(
+                    (item) =>
+                        item.href && (
+                            <div key={item.title}>
+                                <Link
+                                    href={item.href}
+                                    className={`text-sm mx-2  font-medium text-muted-foreground transition-colors hover:text-primary  hover:bg-slate-100  dark:hover:bg-slate-800 p-2 rounded-full `}
+                                >
+                                    {item.title}
+                                </Link>
+                            </div>
+                        ),
+                )}
+            </div>
         </div>
     );
 };
@@ -105,9 +119,8 @@ const NavBarComponent = () => {
                 <div className="flex h-16 items-center text-center ">
                     <MobileMenu />
                     <IntroImageComponent />
-                    <div className="hidden lg:block ">
-                        <LargeMenuComponent />
-                    </div>
+
+                    <LargeMenuComponent />
 
                     <SectionButtonsComponent />
                 </div>
