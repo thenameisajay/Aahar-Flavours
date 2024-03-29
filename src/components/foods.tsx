@@ -3,50 +3,9 @@ import React, { useState, Fragment } from "react";
 import Image from "next/image";
 import { Dialog, Transition } from "@headlessui/react";
 import { ShoppingCart, ShoppingBag } from "lucide-react";
-
-// The following is a list of products that will be displayed on the page.
-const products = [
-  {
-    id: 1,
-    name: "Easy Chicken Briyani",
-    href: "#",
-    imageSrc: "/images/foods/1.webp",
-    imageAlt: "Chicken Briyani",
-    price: 10,
-    description:
-      "Biryani, pronounced 'beery-anee,' is the paella of Indian food. Traditionally, it's baked in a clay pot for hours, but our easy chicken one-pot wonder allows you to create this tasty bowlful at speed!",
-  },
-  {
-    id: 2,
-    name: "Easy Lamb Biryani",
-    href: "#",
-    imageSrc: "/images/foods/2.webp",
-    imageAlt: "Easy Lamb Biryani",
-    price: 15,
-    description:
-      "Biryani, pronounced 'beery-anee,' is the paella of Indian food. Traditionally, it's baked in a clay pot for hours, but our version with British lamb mince is ready in less than thirty minutes!",
-  },
-  {
-    id: 3,
-    name: "Palak Paneer With Cardamom Rice",
-    href: "#",
-    imageSrc: "/images/foods/3.webp",
-    imageAlt: "Palak Paneer With Cardamom Rice",
-    price: 12,
-    description:
-      "To add flavour to this spicy spinach curry, you'll sizzle tomato, onion and spices into a delicious sauce. Add golden brown paneer cheese and serve with fragrant cardamom rice.",
-  },
-  {
-    id: 4,
-    name: "Coriander Chicken & Spiced Rice",
-    href: "#",
-    imageSrc: "/images/foods/4.webp",
-    imageAlt: "Coriander Chicken & Spiced Rice",
-    price: 17,
-    description:
-      "This is modern Indian food. You'll make a fresh coriander chutney, using cool yoghurt, ground almonds, garlic, ginger and coriander. Stir it into warm pan-fried chicken and serve over spiced sultana rice, to create a beautiful & fresh alternative to curry. (Naturally gluten-free, but unsuitable for coeliacs).",
-  },
-];
+import { products } from "@/data/productData";
+import toast from "react-hot-toast";
+import { CartItem } from "@/types/interfaces/interfaces";
 
 function truncateDescription(description: string, maxLength: number) {
   if (description.length > maxLength) {
@@ -55,6 +14,7 @@ function truncateDescription(description: string, maxLength: number) {
   return description;
 }
 
+//TODO : Use useHooks library for local storage
 export default function Foods() {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -77,7 +37,7 @@ export default function Foods() {
     const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     // Check if the item is already in the cart
-    const existingItem = cart.find((item: any) => item.name === name);
+    const existingItem = cart.find((item: CartItem) => item.name === name);
 
     if (existingItem) {
       // If the item is already in the cart, update its quantity
@@ -93,7 +53,7 @@ export default function Foods() {
         quantity: 1,
       });
     }
-
+    toast.success("Item added to cart");
     // Save the updated cart back to localStorage
     localStorage.setItem("cart", JSON.stringify(cart));
   }

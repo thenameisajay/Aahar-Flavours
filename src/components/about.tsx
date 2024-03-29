@@ -21,8 +21,8 @@ export default function About() {
 const CardBody = () => {
   return (
     <div className="card card-side  shadow-xl dark:bg-white bg-white">
-      <div className="flex flex-col sm:flex-row">
-        <div className="card-body">
+      <div className="flex flex-col sm:flex-row p-2">
+        <div className="card-body mr-1">
           <Image
             src="/images/about/chef.webp"
             alt="Movie"
@@ -32,12 +32,12 @@ const CardBody = () => {
             priority
           />
         </div>
-        <div className="card-body">
+        <div className="card-body lg:ml-1  mt-2 p-2">
           <h2 className="card-title text-3xl">{aboutData.title}</h2>
-          <h2 className="card-title font-sans text-gray-500 font-bold">
+          <h2 className="card-title font-sans text-gray-500 font-bold mt-1">
             {aboutData.subTitle}
           </h2>
-          <p className="font-sans text-lg">{aboutData.description}</p>
+          <p className="font-sans text-lg mt-2">{aboutData.description}</p>
         </div>
       </div>
     </div>

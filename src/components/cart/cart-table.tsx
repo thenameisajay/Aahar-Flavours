@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import { CartItem } from "@/types/interfaces/interfaces";
 import Button from "@mui/material/Button";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -8,15 +9,15 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import toast from "react-hot-toast";
 
-export default function Cart(props: any) {
-  let cart = props.cart;
+export default function CartTable({ cart }: { cart: CartItem[] }) {
   const [cartTotal, setCartTotal] = useState(0);
   const [cartEmpty, setCartEmpty] = useState(true);
 
   useEffect(() => {
     let total = 0;
-    cart.forEach((cart: any) => {
+    cart.forEach((cart: CartItem) => {
       total += cart.price * cart.quantity;
     });
     setCartTotal(total);
@@ -33,13 +34,14 @@ export default function Cart(props: any) {
     cart = [];
     setCartTotal(0);
     setCartEmpty(true);
+    toast.success("Cart cleared");
   }
 
   return (
     <div>
       {cartEmpty ? (
         <div className="flex flex-col items-center justify-center">
-          <h1 className="text-3xl font-bold">Your cart is empty</h1>
+          <h1 className="text-2xl font-bold mb-4">Your cart is empty</h1>
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center mt-5">
@@ -53,7 +55,7 @@ export default function Cart(props: any) {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {cart.map((cartItem: any) => (
+                {cart.map((cartItem: CartItem) => (
                   <TableRow
                     key={cartItem.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
