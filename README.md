@@ -17,13 +17,6 @@
 - Remove items from the cart if needed.
 - Proceed to checkout (Note: Checkout is not functional as it's not connected to a backend).
 
-## Technologies Used
-
-- Next.js 14 (App Router)
-
-
-
-
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
