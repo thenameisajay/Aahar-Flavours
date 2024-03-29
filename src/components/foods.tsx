@@ -74,7 +74,7 @@ export default function Foods() {
 
   function addToCart(name: string) {
     // Retrieve the existing cart items from localStorage
-    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
 
     // Check if the item is already in the cart
     const existingItem = cart.find((item: any) => item.name === name);
@@ -82,7 +82,7 @@ export default function Foods() {
     if (existingItem) {
       // If the item is already in the cart, update its quantity
       existingItem.price += products.find(
-        (product) => product.name === name
+        (product) => product.name === name,
       )?.price;
       existingItem.quantity += 1;
     } else {

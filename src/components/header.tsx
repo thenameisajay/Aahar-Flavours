@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 import { Button, Modal } from "antd";
-import Cart from "../ui/components/cart";
+import Cart from "@/components/cart";
 
 export default function Example() {
   const [open, setOpen] = useState(false);
@@ -22,15 +22,10 @@ export default function Example() {
   }
 
   useEffect(() => {
-    // Define a function to retrieve cart from local storage
-
-    // Call the function to retrieve the cart initially
     retrieveCart();
 
-    // Use the storage event to update the cart when changes are made in local storage
     window.addEventListener("storage", retrieveCart);
 
-    // Clean up the event listener when the component unmounts
     return () => {
       window.removeEventListener("storage", retrieveCart);
     };
@@ -47,18 +42,6 @@ export default function Example() {
 
   const handleCancel = () => {
     setIsModalOpen(false);
-  };
-
-  const style = {
-    position: "absolute" as "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
   };
 
   return (
