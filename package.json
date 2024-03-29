@@ -24,6 +24,7 @@
         "@mui/material": "^5.14.17",
         "@mui/styled-engine-sc": "^6.0.0-alpha.5",
         "@radix-ui/react-slot": "^1.0.2",
+        "@typescript-eslint/typescript-estree": "^7.4.0",
         "antd": "^5.15.4",
         "bootstrap": "^5.3.2",
         "class-variance-authority": "^0.7.0",
