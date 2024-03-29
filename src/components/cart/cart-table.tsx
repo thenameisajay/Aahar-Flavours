@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import toast from 'react-hot-toast';
 
 import { CartItem } from '@/types/interfaces/interfaces';
@@ -13,31 +13,89 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 
-export default function CartTable({ cart }: { cart: CartItem[] }) {
+//TODO: Use localstorage from useHooks library
+
+export default function CartTable({ cart: cartData }: { cart: CartItem[] }) {
     const [cartTotal, setCartTotal] = useState(0);
     const [cartEmpty, setCartEmpty] = useState(true);
 
+    let cartCopyItems = useMemo(() => [...cartData], [cartData]);
+
     useEffect(() => {
         let total = 0;
-        cart.forEach((cart: CartItem) => {
+        cartCopyItems.forEach((cart: CartItem) => {
             total += cart.price * cart.quantity;
         });
         setCartTotal(total);
 
-        if (cart.length > 0) {
+        if (cartData.length > 0) {
             setCartEmpty(false);
         } else {
             setCartEmpty(true);
         }
-    }, [cart]);
+    }, [cartData.length]);
 
     function clearCart() {
         localStorage.removeItem('cart');
-        cart = [];
+        cartCopyItems = [];
         setCartTotal(0);
         setCartEmpty(true);
         toast.success('Cart cleared');
     }
+
+    const TableContainerComponent = () => {
+        const TableComponent = () => {
+            return (
+                <Table sx={{ minWidth: 200 }} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="right">Name</TableCell>
+                            <TableCell align="right">Quantity</TableCell>
+                            <TableCell align="right">Price</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {cartData.map((cartItem: CartItem) => (
+                            <TableRow
+                                key={cartItem.name}
+                                sx={{
+                                    '&:last-child td, &:last-child th': {
+                                        border: 0,
+                                    },
+                                }}
+                            >
+                                <TableCell align="right">
+                                    {cartItem.name}
+                                </TableCell>
+                                <TableCell align="right">
+                                    {cartItem.quantity}
+                                </TableCell>
+                                <TableCell align="right">
+                                    {'£ ' + cartItem.price}
+                                </TableCell>
+                            </TableRow>
+                        ))}
+                        <TableRow>
+                            <TableCell align="right">Total</TableCell>
+                            <TableCell align="right"></TableCell>
+                            <TableCell align="right">
+                                {'£ ' + cartTotal}
+                            </TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            );
+        };
+
+        return (
+            <div className="flex flex-col items-center justify-center mt-5">
+                <TableContainer component={Paper}>
+                    <TableComponent />
+                    <Button onClick={() => clearCart()}>Clear All</Button>
+                </TableContainer>
+            </div>
+        );
+    };
 
     return (
         <div>
@@ -48,50 +106,7 @@ export default function CartTable({ cart }: { cart: CartItem[] }) {
                     </h1>
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center mt-5">
-                    <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: 200 }} aria-label="simple table">
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell align="right">Name</TableCell>
-                                    <TableCell align="right">
-                                        Quantity
-                                    </TableCell>
-                                    <TableCell align="right">Price</TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {cart.map((cartItem: CartItem) => (
-                                    <TableRow
-                                        key={cartItem.name}
-                                        sx={{
-                                            '&:last-child td, &:last-child th':
-                                                { border: 0 },
-                                        }}
-                                    >
-                                        <TableCell align="right">
-                                            {cartItem.name}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            {cartItem.quantity}
-                                        </TableCell>
-                                        <TableCell align="right">
-                                            {'£ ' + cartItem.price}
-                                        </TableCell>
-                                    </TableRow>
-                                ))}
-                                <TableRow>
-                                    <TableCell align="right">Total</TableCell>
-                                    <TableCell align="right"></TableCell>
-                                    <TableCell align="right">
-                                        {'£ ' + cartTotal}
-                                    </TableCell>
-                                </TableRow>
-                            </TableBody>
-                        </Table>
-                        <Button onClick={() => clearCart()}>Clear All</Button>
-                    </TableContainer>
-                </div>
+                <TableContainerComponent />
             )}
         </div>
     );
