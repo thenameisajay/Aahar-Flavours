@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { Modal } from 'antd';
-//TODO: Use localstorage from useHooks library
 import { useLocalStorage } from 'usehooks-ts';
 
 import CartTable from '@/components/cart/Cart-table';
