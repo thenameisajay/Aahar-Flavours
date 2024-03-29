@@ -1,15 +1,45 @@
-import { Carousel } from 'react-responsive-carousel';
+// import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 import Image from 'next/image';
+
+import {
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+} from '@/components/ui/carousel';
+import { carouselData } from '@/data/carouselData';
 
 // TODO: Rewrite the carousel component to use the another library
 
 export default function CarouselWithContent() {
     return (
-        <div className="bg-white">
-            <div className="mx-auto mt-2  w-11/12 h-4/5 rounded-lg  justify-center items-center dark:bg-white">
-                <Carousel
+        <div className=" w-full px-2  justify-center flex items-center">
+            <Carousel>
+                <CarouselContent>
+                    {carouselData.map((item, index) => (
+                        <CarouselItem key={index}>
+                            <Image
+                                className="rounded-2xl"
+                                src={item.src}
+                                alt={item.alt}
+                                width={800}
+                                height={800}
+                            />
+                        </CarouselItem>
+                    ))}
+                </CarouselContent>
+
+                <CarouselPrevious />
+                <CarouselNext />
+            </Carousel>
+        </div>
+    );
+}
+{
+    /* <Carousel
                     stopOnHover={false}
                     autoPlay={true}
                     infiniteLoop={true}
@@ -43,8 +73,5 @@ export default function CarouselWithContent() {
                             height={800}
                         />
                     </div>
-                </Carousel>
-            </div>
-        </div>
-    );
+                </Carousel> */
 }

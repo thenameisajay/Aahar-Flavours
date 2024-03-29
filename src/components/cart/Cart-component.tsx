@@ -4,19 +4,13 @@ import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { Modal } from 'antd';
 
 import CartTable from '@/components/cart/Cart-table';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 
 //TODO: Use localstorage from useHooks library
 
 export default function CartComponent() {
     const [cartData, setCartData] = useState([]);
-    function retrieveCart() {
-        const storageCartData = JSON.parse(
-            localStorage.getItem('cart') || '[]',
-        );
-        setCartData(storageCartData);
-    }
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
     useEffect(() => {
         retrieveCart();
 
@@ -27,7 +21,13 @@ export default function CartComponent() {
         };
     }, []);
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const retrieveCart = () => {
+        const storageCartData = JSON.parse(
+            localStorage.getItem('cart') || '[]',
+        );
+        setCartData(storageCartData);
+    };
+
     const showModal = () => {
         setIsModalOpen(true);
         retrieveCart();
