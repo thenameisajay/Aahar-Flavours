@@ -6,24 +6,80 @@ import Image from 'next/image';
 
 import { Dialog, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { BookUser, Home, MenuSquare, Phone, Star, User2 } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
+import { Button } from '@/components/ui/Button';
 import { mainNav } from '@/config/docs';
 
-export default function MobileMenu() {
-    const [open, setOpen] = useState(false);
-
+const ExtraInfoComponent = () => {
     return (
         <>
-            <button
-                type="button"
-                className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
-                onClick={() => setOpen(true)}
-            >
-                <span className="absolute -inset-0.5" />
-                <span className="sr-only">Open menu</span>
-                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
-            </button>
+            <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+                <div className="flow-root">
+                    <a
+                        href="#"
+                        className="-m-2 block p-2 font-medium text-gray-900"
+                    >
+                        <div className="flex flex-row items-center">
+                            <Phone width={20} height={20} />
+                            <p className=" ml-2 text-start">(07443353419) </p>
+                        </div>
+                    </a>
+                </div>
+                <div className="flow-root">
+                    <a
+                        href="#"
+                        className="-m-2 block p-2 font-medium text-gray-900"
+                    >
+                        Order
+                    </a>
+                </div>
+            </div>
+
+            <div className="border-t border-gray-200 px-4 py-6">
+                <a href="#" className="-m-2 flex items-center p-2">
+                    <Image
+                        src="/svg/union-jack.svg"
+                        alt=""
+                        className="block h-auto w-5 flex-shrink-0"
+                        width={100}
+                        height={100}
+                    />
+                    <span className="ml-3 block text-base font-medium text-gray-900">
+                        GBP
+                    </span>
+                    <span className="sr-only">, change currency</span>
+                </a>
+            </div>
+        </>
+    );
+};
+
+const LinkProviderComponent = () => {
+    return (
+        <div className="space-y-6 border-t border-gray-200 px-4 py-6">
+            {mainNav.map((item) => (
+                <div key={item.title} className="flow-root">
+                    <a
+                        href="#"
+                        className="-m-2 block p-2 font-medium text-gray-900"
+                    >
+                        <div className="flex flex-row items-center">
+                            {item.icon}
+                            <p className=" ml-2 text-start">{item.title} </p>
+                        </div>
+                    </a>
+                </div>
+            ))}
+        </div>
+    );
+};
+
+const DrawerComponent = () => {
+    const [open, setOpen] = useState(false);
+
+    const DialogComponent = () => {
+        return (
             <Transition.Root show={open} as={Fragment}>
                 <Dialog
                     as="div"
@@ -69,127 +125,32 @@ export default function MobileMenu() {
                                         />
                                     </button>
                                 </div>
-                                {/* Page sections */}
-                                <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                                    <div className="flow-root">
-                                        <a
-                                            href="#"
-                                            className="-m-2 block p-2 font-medium text-gray-900"
-                                        >
-                                            <div className="flex flex-row items-center">
-                                                <Home />
-                                                <p className=" ml-2 text-start">
-                                                    Home{' '}
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div className="flow-root">
-                                        <a
-                                            href="#"
-                                            className="-m-2 block p-2 font-medium text-gray-900"
-                                        >
-                                            <div className="flex flex-row items-center">
-                                                <User2 />
-                                                <p className=" ml-2 text-start">
-                                                    About{' '}
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div className="flow-root">
-                                        <a
-                                            href="#"
-                                            className="-m-2 block p-2 font-medium text-gray-900"
-                                        >
-                                            <div className="flex flex-row items-center">
-                                                <MenuSquare />
-                                                <p className=" ml-2 text-start">
-                                                    Menu{' '}
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-
-                                    <div className="flow-root">
-                                        <a
-                                            href="#"
-                                            className="-m-2 block p-2 font-medium text-gray-900"
-                                        >
-                                            <div className="flex flex-row items-center">
-                                                <Star />
-                                                <p className=" ml-2 text-start">
-                                                    Reviews{' '}
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div className="flow-root">
-                                        <a
-                                            href="#"
-                                            className="-m-2 block p-2 font-medium text-gray-900"
-                                        >
-                                            <div className="flex flex-row items-center">
-                                                <BookUser />
-                                                <p className=" ml-2 text-start">
-                                                    Contact Us{' '}
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                {/* Links */}
-
-                                <div className="space-y-6 border-t border-gray-200 px-4 py-6">
-                                    <div className="flow-root">
-                                        <a
-                                            href="#"
-                                            className="-m-2 block p-2 font-medium text-gray-900"
-                                        >
-                                            <div className="flex flex-row items-center">
-                                                <Phone width={20} height={20} />
-                                                <p className=" ml-2 text-start">
-                                                    (07443353419){' '}
-                                                </p>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    <div className="flow-root">
-                                        <a
-                                            href="#"
-                                            className="-m-2 block p-2 font-medium text-gray-900"
-                                        >
-                                            Order
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div className="border-t border-gray-200 px-4 py-6">
-                                    <a
-                                        href="#"
-                                        className="-m-2 flex items-center p-2"
-                                    >
-                                        <Image
-                                            src="/svg/union-jack.svg"
-                                            alt=""
-                                            className="block h-auto w-5 flex-shrink-0"
-                                            width={100}
-                                            height={100}
-                                        />
-                                        <span className="ml-3 block text-base font-medium text-gray-900">
-                                            GBP
-                                        </span>
-                                        <span className="sr-only">
-                                            , change currency
-                                        </span>
-                                    </a>
-                                </div>
+                                <LinkProviderComponent />
+                                <ExtraInfoComponent />
                             </Dialog.Panel>
                         </Transition.Child>
                     </div>
                 </Dialog>
             </Transition.Root>
+        );
+    };
+
+    return (
+        <>
+            <Button
+                variant="ghost"
+                className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
+                onClick={() => setOpen(true)}
+            >
+                <span className="absolute -inset-0.5" />
+                <span className="sr-only">Open menu</span>
+                <Bars3Icon className="h-6 w-6" aria-hidden="true" />
+            </Button>
+            <DialogComponent />
         </>
     );
+};
+
+export default function MobileMenu() {
+    return <DrawerComponent />;
 }
