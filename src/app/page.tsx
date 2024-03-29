@@ -1,24 +1,24 @@
-"use client";
-import React from "react";
-import { Toaster } from "react-hot-toast";
+'use client';
 
-import Header from "@/components/header";
-import CarouselWithContent from "@/components/carousel";
-import About from "@/components/about";
-import Foods from "@/components/foods";
-import Testimonials from "@/components/testimonials";
-import Footer from "@/components/footer";
+import About from '@/components/about';
+import CarouselWithContent from '@/components/carousel';
+import Foods from '@/components/foods';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
+import Testimonials from '@/components/testimonials';
+import React from 'react';
+import { Toaster } from 'react-hot-toast';
 
 export default function Home() {
-  return (
-    <div className="flex flex-col">
-      <Toaster />
-      <Header />
-      <CarouselWithContent />
-      <Foods />
-      <About />
-      <Testimonials />
-      <Footer />
-    </div>
-  );
+    return (
+        <div className="flex flex-col">
+            <Toaster />
+            <Header />
+            <CarouselWithContent />
+            <Foods />
+            <About />
+            <Testimonials />
+            <Footer />
+        </div>
+    );
 }
