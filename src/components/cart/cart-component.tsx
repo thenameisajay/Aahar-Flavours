@@ -9,10 +9,12 @@ import { Button } from '@/components/ui/Button';
 //TODO: Use localstorage from useHooks library
 
 export default function CartComponent() {
-    const [carts, setCarts] = useState([]);
+    const [cartData, setCartData] = useState([]);
     function retrieveCart() {
-        const cart = JSON.parse(localStorage.getItem('cart') || '[]');
-        setCarts(cart);
+        const storageCartData = JSON.parse(
+            localStorage.getItem('cart') || '[]',
+        );
+        setCartData(storageCartData);
     }
 
     useEffect(() => {
@@ -52,7 +54,7 @@ export default function CartComponent() {
                 />
             </Button>
             <Modal open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-                <CartTable cart={carts} />
+                <CartTable cart={cartData} />
             </Modal>
         </div>
     );
